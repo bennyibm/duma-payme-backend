@@ -11,7 +11,7 @@ server.use('/', stripeRoute)
 server.use('/', paymentInit)
 server.use('/', paymentValidate)
 
-const port = 5000;
+const port = process.env.RUNNING_PORT
 
 server.listen(port, () => {
   console.log(`The server is running on port ${port}`);
