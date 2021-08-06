@@ -4,6 +4,8 @@ const stripeRoute = require('./routes/stripePaymentIntentCreate')
 const paymentInit = require('./routes/paymentInit')
 const paymentValidate = require('./routes/paymentValidate')
 
+
+
 const server = express()
 server.use(express.static("."));
 server.use(express.json())
