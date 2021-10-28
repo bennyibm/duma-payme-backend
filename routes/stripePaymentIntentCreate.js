@@ -1,11 +1,16 @@
 const router = require('express').Router()
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
+
+/*
+* Endpoint that capture the form pay button
+* retrieve amount and currency to create stripe payment intent*/
+
 router.post("/api/create-payment-intent", async(req,res)=>{
-  
+
 
   try{
-    const { amount, currency, 
+    const { amount, currency,
       // receipt_email
     } = req.body
     console.log('Trying to create a stripe payment intent...')
