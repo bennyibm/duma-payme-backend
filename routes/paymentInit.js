@@ -22,15 +22,18 @@ router.post("/api/payment-init", async (req,res)=>{
   const adminId= req.body.adminId
   const payerId = req.body.payerId
   const paymentInfo = { ip, adminId, payerId }
+  // const currency = req.body.currency
+  // const orderId = req.body.orderId
+  // const customerId = req.body.customerId
+  // const amount = req.body.amount
+
+  // const payloadForEcommerce = {ip, currency, customerId, orderId, amount}
 
 
-    if(req.body.ip === undefined && req.body.adminId === undefined && req.body.payerId === undefined  ){
-      console.log('Unable to init a payment because of empty payload...')
-    }else{
       try{
-    console.log('Ip adress ===>', paymentInfo )
+    console.log('payment info ===>', paymentInfo)
 
-      axios.post('http://18.200.191.178:8081/api/v1/icash/me/init', paymentInfo)
+      axios.post('http://192.168.1.101:8081/api/v1/icash/me/init', paymentInfo)
       .then((response) => {
         res.json(response.data)
         console.log('We initialized the payment, fill the form to payout...')
@@ -38,11 +41,11 @@ router.post("/api/payment-init", async (req,res)=>{
     })
 
     }catch(error){
-      console.log(error)
-      res.json({message:error})
+      console.log('error on init ===>', error)
+      res.json({status:'init has failed',message:error})
     }
 
-    }
+
 
 })
 
