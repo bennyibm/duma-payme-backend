@@ -4,7 +4,8 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 /*
 * Endpoint that capture the form pay button
-* retrieve amount and currency to create stripe payment intent*/
+* retrieve amount and currency to create stripe payment intent
+* */
 
 router.post("/api/create-payment-intent", async(req,res)=>{
 
@@ -25,7 +26,7 @@ router.post("/api/create-payment-intent", async(req,res)=>{
     console.log('Stripe payment intent created...')
 
   }catch(error){
-    console.log(error)
+    console.log("Error on stripe", error)
     res.status(500).json({statusCode: 500, message:error.message})
   }
 })

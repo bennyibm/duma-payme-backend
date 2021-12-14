@@ -7,6 +7,7 @@ const axios = require('axios')
 * then set a payload along together with admin and payer id from the body request
 * and finally send that payload to the payment service
 * which returns infos such as currency, admin logo to use in the form
+*
 * */
 
 let clientIp =''
@@ -16,22 +17,16 @@ router.post("/api/payment-init", async (req,res)=>{
   await axios.get('https://geolocation-db.com/json')
   .then(response =>{
      clientIp = response.data.IPv4
-    console.log('Ip adress ====>:', clientIp)
+
   })
   const ip = clientIp
   const adminId= req.body.adminId
   const payerId = req.body.payerId
   const paymentInfo = { ip, adminId, payerId }
-  // const currency = req.body.currency
-  // const orderId = req.body.orderId
-  // const customerId = req.body.customerId
-  // const amount = req.body.amount
-
-  // const payloadForEcommerce = {ip, currency, customerId, orderId, amount}
 
 
       try{
-    console.log('payment info ===>', paymentInfo)
+    console.log('payment init info ===>', paymentInfo)
 
       axios.post('http://192.168.1.101:8081/api/v1/icash/me/init', paymentInfo)
       .then((response) => {
