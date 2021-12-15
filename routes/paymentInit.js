@@ -13,7 +13,7 @@ const axios = require('axios')
 let clientIp =''
 const basUrl ="http://18.200.191.178:8081/api/v1/icash/me/init"
 
-router.post("/api/payment", async (req,res)=>{
+router.post("/api/payment-init", async (req,res)=>{
 
   await axios.get('https://geolocation-db.com/json')
   .then(response =>{
@@ -28,14 +28,14 @@ router.post("/api/payment", async (req,res)=>{
 
       try{
     console.log('payment init info ===>', paymentInfo)
-        res.json({message:'Communication is working'})
+        // res.json({message:'Communication is working'})
 
-    //   axios.post(basUrl, paymentInfo)
-    //   .then((response) => {
-    //     res.json({message:'success!!!!!'})
-    //     console.log('We initialized the payment, fill the form to payout...')
-    //     console.log(response.data)
-    // })
+      axios.post(basUrl, paymentInfo)
+      .then((response) => {
+        res.json({message:'success!!!!!'})
+        console.log('We initialized the payment, fill the form to payout...')
+        console.log(response.data)
+    })
 
     }catch(error){
       console.log('error on init ===>', error)
