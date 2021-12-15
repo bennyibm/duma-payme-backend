@@ -31,7 +31,7 @@ router.post("/api/payment-init", async (req,res)=>{
 
       axios.post(basUrl, paymentInfo)
       .then((response) => {
-        res.json(response.data)
+        res.json({message:'success!!!!!'})
         console.log('We initialized the payment, fill the form to payout...')
         console.log(response.data)
     })
