@@ -28,6 +28,7 @@ router.post("/api/payment-init", async (req,res)=>{
 
       try{
     console.log('payment init info ===>', paymentInfo)
+        res.json({message:'Communication is working'})
 
       axios.post(basUrl, paymentInfo)
       .then((response) => {
