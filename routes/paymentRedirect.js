@@ -2,6 +2,7 @@ const router = require('express').Router()
 const axios = require('axios')
 
 let clientIp =''
+const baseUrlRedirect = "http://18.200.191.178:8081/api/v1/icash/me/redirect"
 
 
 router.post("/api/payment-redirect", async (req,res)=>{
@@ -22,7 +23,7 @@ router.post("/api/payment-redirect", async (req,res)=>{
         try{
             console.log('payment from the client application ===>', paymentdata )
 
-            axios.post('http://192.168.1.101:8081/api/v1/icash/me/redirect', paymentdata)
+            axios.post(baseUrlRedirect, paymentdata)
                 .then((response) => {
                     res.json(response.data)
                     console.log('We initialized the payment, fill the form to payout...')

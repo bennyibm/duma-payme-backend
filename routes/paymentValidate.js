@@ -8,12 +8,16 @@ const axios = require('axios')
 * lite
 * */
 
+// 18.200.191.178
+
+const baseUrlValidation = "http://18.200.191.178:8081/api/v1/icash/me/validate"
+
 router.post("/api/validate", async (req,res)=>{
   const {reference, sendingAmount, paymentIntentId, receivingAmount, payerId, fee, senderExist, name, email, phone} = req.body
       try{
         console.log('Checking for validation ...', { reference, sendingAmount, paymentIntentId, receivingAmount, payerId, fee, senderExist, name, email, phone} )
 
-      axios.post('http://192.168.1.101:8081/api/v1/icash/me/validate', {reference, sendingAmount, receivingAmount, paymentIntentId, payerId, fee, senderExist, name, email, phone})
+      axios.post(baseUrlValidation, {reference, sendingAmount, receivingAmount, paymentIntentId, payerId, fee, senderExist, name, email, phone})
       .then((response) => {
        console.log('Here is the validation result...')
        console.log(response.data)
