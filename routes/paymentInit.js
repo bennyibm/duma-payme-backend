@@ -30,12 +30,12 @@ router.post("/api/payment-init", async (req,res)=>{
     console.log('payment init info ===>', paymentInfo)
         res.json({message:'Communication is working'})
 
-      axios.post(basUrl, paymentInfo)
-      .then((response) => {
-        res.json({message:'success!!!!!'})
-        console.log('We initialized the payment, fill the form to payout...')
-        console.log(response.data)
-    })
+    //   axios.post(basUrl, paymentInfo)
+    //   .then((response) => {
+    //     res.json({message:'success!!!!!'})
+    //     console.log('We initialized the payment, fill the form to payout...')
+    //     console.log(response.data)
+    // })
 
     }catch(error){
       console.log('error on init ===>', error)
