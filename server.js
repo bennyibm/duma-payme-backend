@@ -1,5 +1,6 @@
 require('dotenv').config({path:'./.env'})
 const express = require('express')
+const cors = require('cors')
 const stripeRoute = require('./routes/stripePaymentIntentCreate')
 const paymentInit = require('./routes/paymentInit')
 const paymentValidate = require('./routes/paymentValidate')
@@ -9,6 +10,7 @@ const paymentRedirect = require('./routes/paymentRedirect')
 
 
 const server = express()
+server.use(cors({origin:true}))
 server.use(express.static("."));
 server.use(express.json())
 server.use('/', stripeRoute)

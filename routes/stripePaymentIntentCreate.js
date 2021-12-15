@@ -5,6 +5,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 /*
 * Endpoint that capture the form pay button
 * retrieve amount and currency to create stripe payment intent
+* http://192.168.1.115:3000/?adminId=61b086378fd8086af11fdd33
 * */
 
 router.post("/api/create-payment-intent", async(req,res)=>{
